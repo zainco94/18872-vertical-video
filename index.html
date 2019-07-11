@@ -3,22 +3,85 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Untitled Document</title>
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-2728311-23', 'auto');
-ga('send', 'pageview');
-</script>
+  <title>Vertical Video</title>
+  <style>
+    .video-js.vjs-has-started .vjs-control.vjs-close-modal {
+      opacity: 1;
+      transition: opacity .1s;
+      position: absolute;
+      margin: 16px;
+      right: 0;
+      width: 16px;
+      height: 16px;
+      background-image: url('http://icons.iconarchive.com/icons/kyo-tux/delikate/256/Close-icon.png');
+      background-size: cover;
+      cursor: pointer;
+    }
+
+    .video-js.vjs-ended .vjs-big-play-button {
+      display: block;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="videoContainer" style="position: relative; display: block;
+max-width: 286px;">
+		<div style="padding-top: 150%;">
+			<video id="myPlayerID"
+				data-video-id="6057428475001"
+				data-account="1752604059001"
+				data-player="tUnbGgd07"
+				data-embed="default"
+				data-application-id
+				class="video-js"
+				controls
+				playsinline
+				style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;
+width: 100%; height: 100%;"></video>
+    <script src="//players.brightcove.net/1752604059001/tUnbGgd07_default/index.min.js"></script>
+		</div>
+	</div>
+
+  <script>
+    videojs.registerPlugin('mtVertPlayer', function(options){
+      var player = this,
+          playerContainer = document.getElementById('videoContainer'),
+          isMobile = (/Android|webOS|iPhone|BlackBerry|Windows Phone|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent)) ? true : false;
+
+      if(isMobile){
+      player.ready(function(){
+          var CloseModal = videojs.getComponent('button');
+              var CloseModal_ = videojs.extend(CloseModal, {
+              constructor: function() {
+                  CloseModal.apply(this, arguments);
+                  this.addClass('vjs-close-modal');
+                  this.controlText('Close video');
+              },
+              handleClick: function() {
+              playerContainer.style.maxWidth = '286px';
+              }
+          });
+              videojs.registerComponent('CloseModal', CloseModal_);
+
+              player.addChild('CloseModal', {});
+      })
+
+          player.on('play', function(){
+          playerContainer.style.width = '100%';
+          playerContainer.style.maxWidth = '';
+          });
+      }
+
+      player.on('ended', function(){
+      playerContainer.style.maxWidth = '286px';
+      player.currentTime(0);
+      });
+    });
+  </script>
 
 
 
-<script src="//learning-services-media.brightcove.com/doc-assets/js/bcls-feedback.js"></script>
 </body>
 
 </html>

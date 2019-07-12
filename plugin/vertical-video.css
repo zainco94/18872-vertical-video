@@ -1,0 +1,17 @@
+/* Style the close modal button */
+.video-js.vjs-has-started .vjs-control.vjs-close-modal {
+  opacity: 1;
+  transition: opacity .1s;
+  position: absolute;
+  margin: 16px;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  background-image: url('http://icons.iconarchive.com/icons/kyo-tux/delikate/256/Close-icon.png');
+  background-size: cover;
+  cursor: pointer;
+}
+/* Style the big play button */
+.video-js.vjs-ended .vjs-big-play-button {
+  display: block;
+}

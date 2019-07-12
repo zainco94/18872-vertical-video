@@ -10,31 +10,31 @@
 <body>
   <div id="videoContainer" style="position: relative; display: block;
 max-width: 286px;">
-		<div style="padding-top: 150%;">
-			<video id="myPlayerID"
-				data-video-id="6057428475001"
-				data-account="1752604059001"
-				data-player="tUnbGgd07"
-				data-embed="default"
-				data-application-id
-				class="video-js"
-				controls
-				playsinline
-				style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;
+    <div style="padding-top: 150%;">
+      <video id="myPlayerID"
+      data-video-id="6057428475001"
+      data-account="1752604059001"
+      data-player="tUnbGgd07"
+      data-embed="default"
+      data-application-id
+      class="video-js"
+      controls
+      playsinline
+      style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px;
 width: 100%; height: 100%;"></video>
-    <script src="//players.brightcove.net/1752604059001/tUnbGgd07_default/index.min.js"></script>
-		</div>
-	</div>
+      <script src="//players.brightcove.net/1752604059001/tUnbGgd07_default/index.min.js"></script>
+    </div>
+  </div>
 
   <!-- Custom script for setting player in full width mode -->
-	<script src="//solutions.brightcove.com/bcls/brightcove-player/vertical-player/vertical-video.js"></script>
-	<script type="text/javascript">
-    videojs.getPlayer('myPlayerID').ready(function() {
+  <script src="//solutions.brightcove.com/bcls/brightcove-player/vertical-player/vertical-video.js"></script>
+
+  <script type="text/javascript">
+    videojs.getPlayer('myPlayerID').ready(function () {
       var myPlayer = this;
       myPlayer.verticalVideo();
     });
   </script>
-
 </body>
 
 </html>
